@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head Tag Starting -->
+    <head>
+        <!-- Title Tag Starting -->
+        <title>JS Assignment</title>
+        <!-- Style Tag Starting -->
+        <style>
+            body
+            {
+                padding-top: 10%;
+                background-color: lightyellow;
+                font-family: monospace;
+            }
+            form input
+            {
+                width: 50%;
+                padding: 2%;
+                margin: 2%;
+            }
+            form label
+            {
+                text-decoration: solid;
+                font-size:18px;
+            }
+        </style>
+        <!-- Style Tag Ending
+        java script tag starting -->
+        <script>
+            function validateNew()
+            {
+                var newemailid = document.myloginForm.emailnew.value;
+                var newpassword = document.myloginForm.passnew.value;
+            
+                var myData = localStorage.getItem('objectToPass');
+                //localStorage.removeItem( 'objectToPass' ); // Clear the localStorage
+                
+                //alert(myData);
+            
+                var emailid = JSON.parse(myData).emailid;
+                var password = JSON.parse(myData).password;
+            
+                if(emailid===newemailid)
+                {
+                  if(password===newpassword)
+                    {
+                        parent.location='ack.html';
+                    }
+                  else 
+                    {
+                        alert("Password is incorrect!");
+                        return false;
+                    }
+                }
+                else 
+                {
+                    alert("Email is incorrect!");
+                    return false;
+                }
+            }
+        </script>
+        <!-- JS Script tag ending -->
+    </head>
+    <!-- Head Tag Ending
+    Style Tag Starting -->
+    <body>
+        <center>
+            <!-- login page  -->
+            <h1 style="text-align:center;">Login</h1>
+            <!-- Login Form Starting -->
+            <form name="myloginForm" onsubmit="return validateNew()" action="ack.html">
+                <label>Email Address:</label><br/>
+                <input type="email" name="emailnew" placeholder="Email Address" class="signup"/><br/>
+                <label>Password</label><br/>
+                <input type="password" name="passnew" placeholder="Enter Password Minimum 8 characters" class="signup"/><br/>
+                <input type="submit" value="Login">
+            </form>
+            <!-- Login form ending -->
+        </center>
+    </body>
+</html>

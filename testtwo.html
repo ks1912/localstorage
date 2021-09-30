@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head Tag Starting -->
+    <head>
+        <!-- Title Tag Starting -->
+        <title>JS Assignment</title>
+        <!-- Style Tag Starting -->
+        <style>
+            body
+            {
+                padding-top: 5%;
+                background-color: lightblue;
+                font-family: monospace;
+            }
+            form input
+            {
+                width: 50%;
+                padding: 2%;
+                margin: 1%;
+            }
+            form label
+            {
+                text-decoration: solid;
+                font-size:18px;
+            }
+        </style>
+        <!-- Style Tag Ending
+        java script tag starting -->
+        <script type="text/javascript">
+            function validate()
+            {
+                //Creating variables and assigning values to them
+                var fullname = document.myForm.fname.value;
+                var emailid = document.myForm.email.value;
+                var phonenum = document.myForm.pnum.value;
+                var password = document.myForm.pass.value;
+                var validatepassword = document.myForm.vpass.value;
+
+                //Empty Column Validation
+                if(fullname==="" || fullname== null || emailid==="" || phonenum=="" || password=="" || validatepassword=="")
+                {
+                    alert("Please fill the details");  
+                    return false;
+                }
+
+                // Phone Number Validation
+                if(phonenum.length<10 || phonenum.length>10)
+                {
+                    alert("Enter a valid 10 Digit phone number "+fullname);
+                    return false;
+                }
+                // Password Number Validation
+                if(password.length > 8 || password.length <20)
+                {
+                    alert("Password Minimum length is 8 and maximum is 20"+fullname);
+                    return false;
+                }
+                // Password and Validation Password comparision
+                if(password != validatepassword)
+                {
+                    alert("Entered Password dosenot match "+fullname);
+                    return false;
+                }
+
+                // Creating a JASON object to store the data in Key: Value Pair
+                var signupData = 
+                {
+                    'fullname' : fullname,
+                    'emailid' : emailid,
+                    'password' : password
+                };
+
+                // Saving the JASON object in the form of string.
+                localStorage.setItem( 'objectToPass', JSON.stringify(signupData));
+            }
+        </script>
+        <!-- JS Script tag ending -->
+    </head>
+    <!-- Head Tag Ending
+    Style Tag Starting -->
+    <body>
+        <!-- Header Tag with Form Name -->
+        <h1 style="text-align:center;">Signup Form</h1>
+        <!-- Form Tag Starting -->
+        <center>
+            <form name="myForm" onsubmit="return validate()" action="login.html">
+                <label>Full Name:</label><br/>
+                <input type="text" name="fname" placeholder="Full Name" class="signup"/><br/>
+                <label>Email Address:</label><br/>
+                <input type="email" name="email" placeholder="Email Address" class="signup"/><br/>
+                <label>Phone Number</label><br/>
+                <input type="number" name="pnum" placeholder="Phone Number don't mention +91 or 0" class="signup"/><br/>
+                <label>Password</label><br/>
+                <input type="password" name="pass" placeholder="Enter Password Minimum 8 characters" class="signup"/><br/>
+                <label>Re-enter Password</label><br/>
+                <input type="password" name="vpass" placeholder="Enter Password again" class="signup"/><br/><br/>
+                <input type="submit" value="Sign Up">
+            </form>
+        </center>
+        <!-- Form Tag Ending -->
+    </body>
+</html>

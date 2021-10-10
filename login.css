@@ -1,0 +1,17 @@
+body
+{
+  padding-top: 10%;
+  background-color: lightyellow;
+  font-family: monospace;
+}
+form input
+{
+  width: 50%;
+  padding: 2%;
+  margin: 2%;
+}
+form label
+{
+  text-decoration: solid;
+  font-size:18px;
+}

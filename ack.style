@@ -1,0 +1,9 @@
+body
+{
+    text-align: center;
+    background-color: lightgreen;
+    font-family: monospace;
+    padding:10%;
+    text-decoration: solid;
+    font-size: 30px;
+}
